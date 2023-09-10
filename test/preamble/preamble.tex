@@ -1,0 +1,269 @@
+\pdfpagewidth=\paperwidth
+\pdfpageheight=\paperheight
+
+% Packages 
+\usepackage{comment}
+\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{cancel}
+% \renewcommand{\arraystretch}{2}
+
+% Sections 
+\titleformat{\section}
+    {\normalfont\fontsize{12}{12}\bfseries}{\thesection}{1em}{}
+
+% Grids
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{calc}
+
+\usepackage{enumitem}
+\newlist{myenum}{enumerate}{2}
+\setlist[myenum]{label=(\alph*)}
+
+% Basics
+% \renewcommand\familydefault{\sfdefault}
+\cfoot{}
+\setlength{\parindent}{0pt}
+
+% Points Formatting 
+\pointsinrightmargin
+\pointformat{[\,\themarginpoints\,]}
+\bonuspointformat{[\,\themarginpoints\,]}
+
+% A B C => a.) (b.) (c.)
+\renewcommand{\choicelabel}{(\alph{choice})}
+\renewcommand{\subpartlabel}{(\roman{subpart})}
+
+% Horizontal Multiple Choice
+\usepackage{tabularx}
+
+\newcounter{choicecnt}
+\renewcommand\thechoice{(\alph{choicecnt})}
+
+\newenvironment{mychoices}[1]
+{\setcounter{choicecnt}{0}\setlength{\extrarowheight}{0.5em}\par\tabularx{\textwidth}{@{}*{#1}{>{\stepcounter{choicecnt}\thechoice\hspace{1em}\arraybackslash}X}@{}}} 
+  {\endtabularx}
+
+\newenvironment{mychoices2}[1]
+{\setcounter{choicecnt}{0}\setlength{\extrarowheight}{0.5em}\par\tabularx{\textwidth}{@{}*{#1}{>{\stepcounter{choicecnt}\textnormal{(\roman{choicecnt})}\hspace{1em}\arraybackslash}X}@{}}}
+{\endtabularx}
+
+% Inkscape Figures
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[2][1]{
+    \def\svgwidth{#1\columnwidth}
+    \import{../figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+% Chemistry
+\usepackage{lewis} 
+\usepackage{bohr}
+\usepackage[version=4]{mhchem}
+
+% Basics 
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+% \usepackage{textcomp}
+% \usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+% \usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
+% \usepackage[varbb]{newpxmath}
+% \usepackage{xfrac}
+% \usepackage[usenames,dvipsnames]{xcolor} % usenames, dvipsnames adds more colours
+% \usepackage{hhline}
+% \usepackage{tasks}
+% \usepackage{enumerate} 
+% \usepackage{enumitem} 
+% \usepackage{titlesec}
+% \usepackage[most]{tcolorbox}
+% \usepackage{lipsum}
+% \usepackage{tabularx}
+% \usepackage{caption}
+% \usepackage{subfig}
+% \usepackage{pgfplots}
+% \usepackage{cancel} 
+\usepackage{physics} 
+% \usepackage[bookmarks]{hyperref}
+% \usepackage{array}
+% \usepackage{float}
+
+
+% Tables 
+% \numberwithin{table}{section}
+
+
+% Page setup
+% \hypersetup{hidelinks}
+% \pagenumbering{arabic}
+% \pagestyle{plain}
+% \setlength{\parindent}{0pt}
+
+% Show subsubsections
+% \setcounter{tocdepth}{3}
+% \setcounter{secnumdepth}{3}
+
+% Required for the Grid
+% \usetikzlibrary{calc}
+
+% Section Font-Size
+% \titleformat{\subsubsection}
+  % {\normalfont\fontsize{12}{12}\bfseries}{\thesubsubsection}{1em}{}
+
+% \titleformat{\subsection}
+  % {\normalfont\fontsize{12}{12}\bfseries}{\thesubsection}{1em}{}
+
+% \titleformat{\section}
+  % {\normalfont\fontsize{12}{12}\bfseries}{\thesection}{1em}{}
+
+% Section Spacing
+% \titlespacing{\section}{0em}{2.5em}{1em}
+% \titlespacing{\subsection}{0em}{2.5em}{1em}
+% \titlespacing{\subsubsection}{0em}{2.5em}{1em}
+
+% % Theorems 
+% \usepackage{thmtools}
+% \usepackage[framemethod=TikZ]{mdframed}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{ProcessBlue!70!black}, bodyfont=\normalfont,
+%     headpunct= :,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false,
+%         linecolor=ProcessBlue, backgroundcolor=ProcessBlue!5,
+%         innerbottommargin=10pt
+%     } ]{note}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{NavyBlue!70!black}, 
+%     bodyfont=\normalfont,
+%     headpunct=,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false, linecolor=NavyBlue, innerbottommargin=10pt
+%     }
+% ]{solution}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{Gray!70!black}, bodyfont=\normalfont,
+%     headpunct= ,
+%     postheadspace=\newline,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false,
+%         linecolor=Gray, backgroundcolor=Gray!5,
+%         innerbottommargin=10pt
+%     } ]{remark}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{Fuchsia!70!black}, bodyfont=\normalfont,
+%     headpunct= ,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false,
+%         linecolor=Fuchsia, backgroundcolor=Fuchsia!5,
+%         innerbottommargin=10pt
+%     }
+% ]{example}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{Fuchsia!70!black}, 
+%     bodyfont=\normalfont,
+%     headpunct= ,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false,
+%         linecolor=Fuchsia,
+%     }
+% ]{examplesolution}
+
+% \declaretheoremstyle[
+%     headfont=\bfseries\sffamily\color{black!70!black}, 
+%     bodyfont=\normalfont,
+%     headpunct=,
+%     postheadspace=\newline,
+%     mdframed={
+%         linewidth=2pt,
+%         rightline=false, topline=false, bottomline=false,
+%         linecolor=black,
+%     }
+% ]{definition}
+
+% \declaretheorem[style=solution, name=Solution, numbered=no]{solution}
+
+% \declaretheorem[style=definition, name=Definition, numberwithin=section]{definitionswap}
+% \newenvironment{definition}[1]{\begin{definitionswap}[#1]}{\end{definitionswap}\vspace{0.5em}}
+
+% \declaretheorem[style=note, name=Note, numbered=no]{noteswap}
+% \newenvironment{note}[1]{\vspace{0.5em}\begin{noteswap}[#1]}{\end{noteswap}\vspace{0.5em}}
+
+% \declaretheorem[style=remark, name=Remark, numbered=no]{remarkswap}
+% \newenvironment{remark}[1]{\vspace{0.5em}\begin{remarkswap}[#1]}{\end{remarkswap}\vspace{0.5em}}
+
+% \declaretheorem[style=example, name=Example, numbered=no]{exampleswap}
+% % \newenvironment{example}{\vspace{0.5em}\begin{exampleswap}}{\end{exampleswap}}
+
+% \declaretheorem[style=examplesolution, name=Solution, numbered=no]{examplesolutionswap}
+% \newenvironment{examplesolution}{\vspace{-2em}\begin{examplesolutionswap}}{\end{examplesolutionswap}}
+
+% % Enumerate environments 
+% \newenvironment{2qu}
+% {
+% \begin{enumerate}[label=(\alph*)]
+% }
+% {\end{enumerate}}
+
+% \newenvironment{3qu}
+% {
+% \begin{enumerate}[label=(\roman*)]
+% }
+% {\end{enumerate}}
+
+% % Normal Environments 
+% \newenvironment{list0.5}
+% {
+% \begin{enumerate}
+% \setlength\itemsep{0.5em}
+% }
+% {\end{enumerate}}
+
+% % thmtools Environments
+% \newenvironment{problems}
+% {
+%     \subsection{Problems}
+%     \begin{enumerate}
+%     \setlength\itemsep{1em}
+% }
+% {\end{enumerate}}
+
+% \newenvironment{+problems}
+% {
+%     \subsubsection{Problems}
+%     \begin{enumerate}
+%     \setlength\itemsep{1em}
+% }
+% {\end{enumerate}}
+
+% \newenvironment{example}[1]
+% {
+%     \begin{exampleswap}
+%         #1
+%     \end{exampleswap}
+%     \begin{examplesolution}
+% }
+% {
+% \end{examplesolution}}
+
+% \newenvironment{2example}[1]
+% {
+%     \begin{exampleswap}[#1]
+% }
+% {
+% \end{exampleswap}}

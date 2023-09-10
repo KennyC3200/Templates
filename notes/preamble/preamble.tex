@@ -1,0 +1,262 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% UNIT PREAMBLE %%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Basics 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
+\usepackage[varbb]{newpxmath}
+\usepackage{xfrac}
+\usepackage[usenames,dvipsnames]{xcolor} % usenames, dvipsnames adds more colours
+\usepackage{hhline}
+\usepackage{comment}
+\usepackage{tasks}
+\usepackage{enumerate} 
+\usepackage{enumitem} 
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage[labelfont=bf]{caption}
+\usepackage{subfig}
+\usepackage{pgfplots}
+\usepackage{cancel} 
+\usepackage{physics} 
+\usepackage[bookmarks]{hyperref}
+\usepackage{array}
+\usepackage{float}
+\usepackage{standalone}
+\usepackage{graphicx}
+
+% Tables 
+\numberwithin{table}{section}
+
+% Inkscape Figures
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[2][1]{
+    \def\svgwidth{#1\columnwidth}
+    \import{../figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+% Chemistry
+\usepackage{lewis} 
+\usepackage{bohr}
+\usepackage[version=4]{mhchem}
+
+% Page setup
+\hypersetup{hidelinks}
+\pagenumbering{arabic}
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+
+% Show subsubsections
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+% Required for the Grid
+\usetikzlibrary{calc}
+
+% Section Font-Size
+\titleformat{\subsubsection}
+  {\normalfont\fontsize{12}{12}\bfseries}{\thesubsubsection}{1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{14}{14}\bfseries}{\thesubsection}{1em}{}
+
+\titleformat{\section}
+  {\normalfont\fontsize{16}{16}\bfseries}{\thesection}{1em}{}
+
+% Section Spacing
+\titlespacing{\section}{0em}{2.5em}{1em}
+\titlespacing{\subsection}{0em}{2.5em}{1em}
+\titlespacing{\subsubsection}{0em}{2.5em}{1em}
+
+% New page for each section 
+\newcommand{\sectionbreak}{\clearpage}
+
+% TABLE COLUMN SEPARATION (USES ARRAY PACKAGE)
+% \renewcommand{\arraystretch}{1.8} % changes vertical space for each cell 
+% \setlength{\tabcolsep}{18pt} % changes horizontal space for each cell
+% \setlength{\arrayrulewidth}{0.25mm}
+
+% TCOLORBOX 
+% \newtcolorbox[auto counter, number within=section]{definition}{colback=white,title=Example~\thetcbcounter,breakable,colframe=white,boxrule=0pt, enhanced, title style={left color=gray!60,right color=white,middle color=white},arc=0mm, titlerule=0pt, fonttitle=\bfseries\sffamily}
+
+% Theorems 
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ProcessBlue!70!black}, bodyfont=\normalfont,
+    headpunct= :,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=ProcessBlue, backgroundcolor=ProcessBlue!5,
+        innerbottommargin=10pt
+    } ]{note}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{NavyBlue!70!black}, 
+    bodyfont=\normalfont,
+    headpunct=,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false, linecolor=NavyBlue, innerbottommargin=10pt
+    }
+]{solution}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Gray!70!black}, bodyfont=\normalfont,
+    headpunct= ,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Gray, backgroundcolor=Gray!5,
+        innerbottommargin=10pt
+    } ]{remark}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Fuchsia!70!black}, bodyfont=\normalfont,
+    headpunct= ,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Fuchsia, backgroundcolor=Fuchsia!5,
+        innerbottommargin=10pt
+    }
+]{example}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{Fuchsia!70!black}, 
+    bodyfont=\normalfont,
+    headpunct= ,
+    mdframed={
+        linewidth=2pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=Fuchsia,
+    }
+]{examplesolution}
+
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{black!70!black}, 
+    bodyfont=\normalfont,
+    postheadspace=\newline,
+    mdframed={
+        linewidth=1pt,
+        rightline=false, topline=false, bottomline=false,
+        linecolor=black,
+    }
+]{definition}
+
+\declaretheorem[style=solution, name=Solution, numbered=no]{solution}
+
+\declaretheorem[style=solution, name=Derivation, numbered=no]{derivation}
+
+\declaretheorem[style=note, name=Note, numbered=no]{noteswap}
+\newenvironment{note}[1]{\vspace{0.5em}\begin{noteswap}[#1]}{\end{noteswap}\vspace{0.5em}}
+
+\declaretheorem[style=remark, name=Remark, numbered=no]{remarkswap}
+\newenvironment{remark}{\vspace{0.5em}\begin{remarkswap}}{\end{remarkswap}\vspace{0.5em}}
+
+\declaretheorem[style=example, name=Example, numbered=no]{exampleswap}
+% \newenvironment{example}{\vspace{0.5em}\begin{exampleswap}}{\end{exampleswap}}
+
+\declaretheorem[style=examplesolution, name=Solution, numbered=no]{examplesolutionswap}
+\newenvironment{examplesolution}{\vspace{-2em}\begin{examplesolutionswap}}{\end{examplesolutionswap}}
+
+% Enumerate environments 
+\newenvironment{2qu}
+{
+\begin{enumerate}[label=(\alph*)]
+}
+{\end{enumerate}}
+
+\newenvironment{3qu}
+{
+\begin{enumerate}[label=(\roman*)]
+}
+{\end{enumerate}}
+
+% Normal Environments 
+\newenvironment{list0.5}
+{
+\begin{enumerate}
+\setlength\itemsep{0.5em}
+}
+{\end{enumerate}}
+
+% \titleformat{\section}{\vbox{\rule{\linewidth}{0.8pt}}\bigskip\LARGE\bfseries}{\thesection}{1em}{} % horizontal line above 
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}] % horizontal line below
+
+% thmtools Environments
+\newenvironment{problems}
+{
+    \subsection{Problems}
+    \begin{enumerate}
+    \setlength\itemsep{1em}
+}
+{\end{enumerate}}
+
+\newenvironment{+problems}
+{
+    \subsubsection{Problems}
+    \begin{enumerate}
+    \setlength\itemsep{1em}
+}
+{\end{enumerate}}
+
+\newenvironment{example}[1]
+{
+    \begin{exampleswap}
+        #1
+    \end{exampleswap}
+    \begin{examplesolution}
+}
+{
+\end{examplesolution}}
+
+\newenvironment{2example}[1]
+{
+    \begin{exampleswap}[#1]
+}
+{
+\end{exampleswap}}
+
+% Managing Figure Captions 
+\captionsetup{width=0.8\textwidth}
+
+% TABLE
+% \begin{table}[h!] % delete [h!] if there are bugs
+
+%     %%% TABLE CONFIG %%% 
+%     \renewcommand{\arraystretch}{1.5} % changes vertical space for each cell 
+%     \setlength{\tabcolsep}{10pt} % changes horizontal space for each cell
+%     \setlength{\arrayrulewidth}{0.25mm}
+
+%     \begin{center}
+%          title of the table \
+%         \vspace{0.5em}
+%         \begin{tabular}{|c|c|} % use r, l, c for right, left, center. use m{3cm} for middle width of 3cm, use  b{3cm} for bottom width of 3cm, and use p{3cm} for a top width of 3cm.  
+%         \hline
+%          &  \ % two columns corresponding to two c's
+%         \hline
+%          &  \ % second row
+%         \hline
+%         \end{tabular}
+%     \end{center}
+%     \caption{}
+% \end{table}
