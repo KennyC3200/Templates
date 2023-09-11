@@ -1,13 +1,17 @@
-\documentclass{report}
-\input{./preamble.tex}
-\input{./macros.tex}
+\documentclass[12pt]{report}
 
-\title{TITLE HERE}
-\author{Kenny Chen}
+\input{../preamble/preamble.tex}
+\input{../preamble/macros.tex}
+\usepackage{standalone}
 
 \begin{document}
-    \maketitle 
-    \tableofcontents 
 
-    \input{lec_01.tex}
+\author{Kenny Chen}
+\title{}
+\maketitle
+\tableofcontents
+\newpage
+
+\input{../unit1/w1.tex}
+
 \end{document}
